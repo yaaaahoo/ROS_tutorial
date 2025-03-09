@@ -1,0 +1,11 @@
+{
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "C_Cpp.formatting": "clangFormat",
+    "editor.formatOnSave": true,
+    "clang-format.executable": "/home/yahoo/.vscode/extensions/ms-vscode.cpptools-1.23.6-linux-x64/LLVM/bin/clang-format",
+    "files.associations": {
+        "iostream": "cpp"
+    }
+}
