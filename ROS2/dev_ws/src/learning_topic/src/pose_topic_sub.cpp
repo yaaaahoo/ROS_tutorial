@@ -1,7 +1,7 @@
 #include "pose_topic_sub.h"
 
 PoseSubNode::PoseSubNode() : rclcpp::Node("pose_topic_sub_node") {
-  RCLCPP_INFO(get_logger(), "PoseSubNode Constructer.\n");
+  RCLCPP_INFO(get_logger(), "PoseSubNode Constructer.");
 
   sub_ = this->create_subscription<turtlesim::msg::Pose>(
       "/turtle1/pose", 10,
@@ -9,12 +9,11 @@ PoseSubNode::PoseSubNode() : rclcpp::Node("pose_topic_sub_node") {
 }
 
 PoseSubNode::~PoseSubNode() {
-  RCLCPP_INFO(get_logger(), "PoseSubNode DeConstructer.\n");
+  RCLCPP_INFO(get_logger(), "PoseSubNode DeConstructer.");
 }
 
 void PoseSubNode::callback(const turtlesim::msg::Pose::ConstPtr &msg) {
-  RCLCPP_INFO(get_logger(), "Get postion[x: %0.2f, y: %0.2f].\n", msg->x,
-              msg->y);
+  RCLCPP_INFO(get_logger(), "Get postion[x: %0.2f, y: %0.2f].", msg->x, msg->y);
 
   sleep(1);
 }

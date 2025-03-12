@@ -1,7 +1,7 @@
 #include "vel_topic_pub.h"
 
 VelPubNode::VelPubNode() : rclcpp::Node("vel_topic_pub_node") {
-  RCLCPP_INFO(get_logger(), "VelPubNode Constructor.\n");
+  RCLCPP_INFO(get_logger(), "VelPubNode Constructor.");
 
   publisher_ =
       this->create_publisher<geometry_msgs::msg::Twist>("/turtle1/cmd_vel", 10);
@@ -10,7 +10,7 @@ VelPubNode::VelPubNode() : rclcpp::Node("vel_topic_pub_node") {
 }
 
 VelPubNode::~VelPubNode() {
-  RCLCPP_INFO(get_logger(), "VelPubNode DeConstructer.\n");
+  RCLCPP_INFO(get_logger(), "VelPubNode DeConstructer.");
 }
 
 void VelPubNode::func() {

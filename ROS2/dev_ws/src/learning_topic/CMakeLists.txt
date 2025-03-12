@@ -10,6 +10,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(turtlesim REQUIRED)
+find_package(interface)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -26,6 +27,18 @@ add_executable(pose_topic_sub_node src/pose_topic_sub.cpp)
 ament_target_dependencies(pose_topic_sub_node rclcpp turtlesim)
 install(TARGETS
   pose_topic_sub_node
+  DESTINATION lib/${PROJECT_NAME})
+
+add_executable(room_env_pub src/room_env_pub.cpp)
+ament_target_dependencies(room_env_pub rclcpp interface)
+install(TARGETS
+room_env_pub
+  DESTINATION lib/${PROJECT_NAME})
+
+add_executable(room_env_sub src/room_env_sub.cpp)
+ament_target_dependencies(room_env_sub rclcpp interface)
+install(TARGETS
+room_env_sub
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)

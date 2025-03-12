@@ -11,6 +11,7 @@ find_package(rclcpp REQUIRED)
 find_package(turtlesim REQUIRED)
 find_package(geometry_msgs)
 find_package(std_srvs)
+find_package(interface)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -27,6 +28,18 @@ add_executable(control_turtle_node src/control_turtle_server.cpp)
 ament_target_dependencies(control_turtle_node rclcpp geometry_msgs std_srvs)
 install(TARGETS
   control_turtle_node
+  DESTINATION lib/${PROJECT_NAME})
+
+add_executable(add_two_num_client src/add_two_num_client.cpp)
+ament_target_dependencies(add_two_num_client rclcpp interface)
+install(TARGETS
+  add_two_num_client
+  DESTINATION lib/${PROJECT_NAME})
+
+add_executable(add_two_num_server src/add_two_num_server.cpp)
+ament_target_dependencies(add_two_num_server rclcpp interface)
+install(TARGETS
+  add_two_num_server
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
