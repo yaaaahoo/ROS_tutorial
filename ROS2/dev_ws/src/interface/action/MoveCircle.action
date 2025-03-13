@@ -1,0 +1,5 @@
+bool enable     # 动作的目标，true 表示开始圆周运动
+---
+bool result     # 动作的结果，true 表示运动完成
+---
+int32 feedback    # 动作的反馈，及时反馈当前的进度

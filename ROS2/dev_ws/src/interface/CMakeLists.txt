@@ -14,6 +14,7 @@ find_package(rosidl_default_generators)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/AddTwoNum.srv"
   "msg/RoomEnv.msg"
+  "action/MoveCircle.action"
 )
 
 if(BUILD_TESTING)

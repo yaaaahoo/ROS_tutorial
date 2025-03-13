@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(learning_parameter)
+project(learning_action)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -8,15 +8,23 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-
+find_package(rclcpp_action REQUIRED)
+find_package(interface REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_executable(update_bk_node src/update_bk.cpp)
-ament_target_dependencies(update_bk_node rclcpp)
+include_directories(include/learning_action)
+add_executable(move_circle_client_node src/move_circle_client.cpp)
+ament_target_dependencies(move_circle_client_node rclcpp rclcpp_action interface)
 install(TARGETS
-  update_bk_node
+move_circle_client_node
+  DESTINATION lib/${PROJECT_NAME})
+
+add_executable(move_circle_server_node src/move_circle_server.cpp)
+ament_target_dependencies(move_circle_server_node rclcpp rclcpp_action interface)
+install(TARGETS
+move_circle_server_node
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
